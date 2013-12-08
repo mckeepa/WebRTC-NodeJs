@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Web RTC</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./lib/bootstrap-3.0.2-dist/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./lib/bootstrap-3.0.2-dist/dist/css/jumbotron.css" rel="stylesheet">
+    <link href="./css/rtc.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!--<style>
+      @media screen and (min-width: 1000px) {
+        video {
+          height: 540px;
+        }
+      }
+    </style>-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Web Real Time Communication (RTC)</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <!-- <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form> -->
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Real Time Communication (RTC)</h1>
+        <p>This site is to show what can be done simpliy using Web RTC. and will hopfully be used to show how it can be ustilised in health care.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+    
+
+      <!-- Example row of columns -->
+      <div class="row">
+       
+        <div class="col-md-4">
+          <h2>Peer Connection</h2>
+          <p>An example to how to Web RTC using audio. </p>
+          <div id='audioExample'> </div>
+
+          <p>
+            <a class="btn btn-default" data-toggle="modal" data-target="#modalRTCPeerConnection" role="button">Demo &raquo;</a>
+        </p>
+        </div>
+       
+        <div class="col-md-4">
+          <h2>Video</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          
+          <p>
+          <!-- Button trigger modal -->
+          <p><a class="btn btn-default" data-toggle="modal" data-target="#myModal" role="button">Demo &raquo;</a></p>
+          <!-- <a id="startVideo2" href="#modalVideo" role="button" class="btn" data-toggle="modal">Start Video</a> -->
+          <!-- <a class="btn btn-default" href="#" role="button">Start &raquo;</a></p> -->
+       </div>
+
+        <div class="col-md-4">
+          <h2>Instant Messaging</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            
+          </p>
+          <!-- Button trigger modal -->
+          <p><a class="btn btn-default" data-toggle="modal" data-target="#modalRTCInstantMessage" role="button">Demo &raquo;</a></p>
+          
+        </div>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+       
+        <div class="col-md-4">
+          <h2>Screen Capture</h2>
+          <p>An example to how to use Web RTC using for screen capture. Under Development. <a src="https://html5-demos.appspot.com/static/getusermedia/screenshare.html">Screen Sharing Demo</a></p>
+          <div id='audioExample'> </div>
+
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>  
+
+
+
+      <!-- Modal Noraml Video -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              <button id="startVideo" type="button" class="btn btn-primary">Start</button>
+              <button id="stopVideo" type="button" class="btn btn-primary">Stop</button>
+            </div>
+            <div class="modal-body">
+              <p>Video element…</p>
+              <div id='VideoExample' > 
+                  <video width="100%" autoplay></video>
+              </div>
+             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+
+
+      <!-- RTCPeerConnection Video -->
+      <div class="modal fade" id="modalRTCPeerConnection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">RTC Peer Connection</h4>
+            </div>
+            <div class="modal-body">
+              <video width="100%" id="localVideo" autoplay></video>
+              <video width="100%" id="remoteVideo" autoplay></video>
+
+              <div>
+                <button id="startButton">Start</button>
+                <button id="callButton">Call</button>
+                <button id="hangupButton">Hang Up</button>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+
+<!-- RTCPeerConnection Video -->
+      <div class="modal fade" id="modalRTCInstantMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">RTC Peer Connection</h4>
+            </div>
+            <div class="modal-body">
+              <textarea id="dataChannelSend" disabled></textarea>
+              <textarea id="dataChannelReceive" disabled></textarea>
+
+              <div id="buttons">
+                <button id="chatStartButton">Start</button>
+                <button id="chatSendButton">Send</button>
+                <button id="chatCloseButton">Stop</button>
+              </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+
+
+
+
+
+      <hr>
+
+      <footer>
+        <p>&copy; Paul McKee 2013</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+  
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./lib/jquery-1.10.2.min.js"></script>
+    <script src="./lib/bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
+   <!-- <script src="./lib/bootstrap-3.0.2-dist/bootstrap-modal.js"></script>-->
+     <script src="js/main.js"></script>
+     <script src="js/peerConnection.js"></script>
+     <script src="js/chat.js"></script>
+         
+  </body>
+</html>
