@@ -26,10 +26,25 @@ var http  = require("http"),
 // console.log("Cert:", caCertFilePath);
 
 
-var options = {
-  key: fs.readFileSync('server/ssl/cakey.pem'),
-  cert: fs.readFileSync('server/ssl/cacert.pem')
-};
+ var options = {
+   key: fs.readFileSync('server/ssl/pauls-ssl-key.pem'),
+   cert: fs.readFileSync('server/ssl/pauls-ssl-cert.pem'),
+   
+ };
+
+// var options = {
+//   key: fs.readFileSync('server/secret/private.key'),
+//   cert: fs.readFileSync('server/secret/self.crt')
+// };
+
+//var options = {
+//    // Important: the following crt and key files are insecure
+//    // replace the following files with your own keys
+//    key:fs.readFileSync('server/secret/private.key'),
+//    ca:[fs.readFileSync('server/secret/AddTrustExternalCARoot.crt'),
+//        fs.readFileSync('server/secret/SSLcomAddTrustSSLCA.crt')],
+//    cert:fs.readFileSync('server/secret/www_sharefest_me.crt')
+//};
 
 
 // http.createServer(options, function (req, res) {
@@ -108,9 +123,7 @@ function getFile(localPath, mimeType, res) {
   // read the file in and return it, or return a 500 if it can't be read
   fs.readFile(localPath, function(err, contents) {
     if (!err) {
-      res.writeHead(200, {
-        "Content-Type": mimeType,
-        "Content-Length": contents.length
+      	res.writeHead(200, {"Content-Type": mimeType,"Content-Length": contents.length
       });
       res.end(contents);
     } else {
