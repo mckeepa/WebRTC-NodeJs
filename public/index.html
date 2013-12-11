@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Web Real Time Communication (RTC)</a>
+          <a class="navbar-brand" href="#">Web RTC Meeting</a>
         </div>
         <div class="navbar-collapse collapse">
           <!-- <form class="navbar-form navbar-right">
@@ -65,7 +65,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Real Time Communication (RTC)</h1>
+        <h1>Video Meeting</h1>
         <p>This site is to show what can be done simpliy using Web RTC. and will hopfully be used to show how it can be ustilised in health care.</p>
         <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
       </div>
@@ -78,18 +78,16 @@
       <div class="row">
        
         <div class="col-md-4">
-          <h2>Peer Connection</h2>
-          <p>An example to how to Web RTC using audio. </p>
-          <div id='audioExample'> </div>
+          <h2>Video Meeting and Chat</h2>
+          <p>An example to how to Web RTC Audio and Video with chat from a server </p>
+          <!-- <div id='audioAndViderServerExample'> </div> -->
+          <p><a id='btnAudioAndViderServer' class="btn btn-default" data-toggle="modal" data-target="#modalRTCUsingServer" role="button">Demo &raquo;</a></p>
 
-          <p>
-            <a class="btn btn-default" data-toggle="modal" data-target="#modalRTCPeerConnection" role="button">Demo &raquo;</a>
-        </p>
         </div>
        
         <div class="col-md-4">
           <h2>Video</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p>Basic Video  - Note Working right now :-( </p>
           
           <p>
           <!-- Button trigger modal -->
@@ -100,9 +98,7 @@
 
         <div class="col-md-4">
           <h2>Instant Messaging</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-            
-          </p>
+          <p>A basic Instant messaging using webkitRTCPeerConnection</p>
           <!-- Button trigger modal -->
           <p><a class="btn btn-default" data-toggle="modal" data-target="#modalRTCInstantMessage" role="button">Demo &raquo;</a></p>
           
@@ -203,9 +199,36 @@
       </div><!-- /.modal -->
 
 
+<!-- Using Server RTCPeerConnection Video -->
+      <div class="modal fade" id="modalRTCUsingServer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">RTC Peer Connection</h4>
+            </div>
+            <div class="modal-body">
+              <div id='videos'>
+                <video id='localVideoP2P' autoplay muted></video>
+                <video id='remoteVideoP2P' autoplay></video>
+              </div>
 
-
-
+              <div>
+                Out
+                <TEXTAREA id ='out' width='100' height='100'></TEXTAREA>
+                <input id='send' type='button' value='Send'> </input>
+              </div>
+              <div>
+                In
+                <TEXTAREA id ='in' width='100' height='100'></TEXTAREA>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
 
       <hr>
 
@@ -219,15 +242,20 @@
 
 
 
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./lib/jquery-1.10.2.min.js"></script>
     <script src="./lib/bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
    <!-- <script src="./lib/bootstrap-3.0.2-dist/bootstrap-modal.js"></script>-->
-     <script src="js/main.js"></script>
-     <script src="js/peerConnection.js"></script>
-     <script src="js/chat.js"></script>
+    <!--<script src="js/main_p2p.js"></script>-->
+    <script src="js/peerConnection.js"></script>
+    <script src="js/chat.js"></script>
+    <script src='lib/socket.io/socket.io.js'></script>
+    <script src="js/p2pChat.js"></script>
+
          
   </body>
 </html>

@@ -4,3 +4,14 @@ video {
   -webkit-filter: hue-rotate(180deg) saturate(200%);*/
   width="100%"
 }
+
+.modal-dialog {
+  width: 95%;
+  /*height: 95%;
+  padding: 0;*/
+}
+
+.modal-content {
+ /* height: 95%;
+ border-radius: 0;*/
+}
